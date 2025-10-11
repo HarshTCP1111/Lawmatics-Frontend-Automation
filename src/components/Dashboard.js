@@ -42,7 +42,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCronStatus = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/automation/status');
+        const response = await axios.get('https://lawmatics-backend.onrender.com/api/automation/status');
         setCronStatus(response.data);
       } catch (error) {
         console.error('Error fetching automation status:', error);
@@ -69,7 +69,7 @@ const Dashboard = () => {
   // Sync matter statuses with backend
   const syncMatterStatuses = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/matters');
+      const response = await axios.get('https://lawmatics-backend.onrender.com/api/matters');
       const backendMatters = response.data;
       
       setValidEntries(prev => prev.map(entry => {
@@ -86,7 +86,7 @@ const Dashboard = () => {
 
   const loadMattersFromBackend = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/matters');
+      const response = await axios.get('https://lawmatics-backend.onrender.com/api/matters');
       const matters = response.data;
       const formattedEntries = matters.map((matter, index) => ({
         srNo: index + 1,
@@ -105,7 +105,7 @@ const Dashboard = () => {
   // Helper function to update matter status in backend
   const updateMatterStatus = async (lawmaticsId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/matters/${lawmaticsId}`, { status });
+      await axios.put(`https://lawmatics-backend.onrender.com/api/matters/${lawmaticsId}`, { status });
       
       // Update local state
       setValidEntries(prev => prev.map(entry => 
@@ -120,7 +120,7 @@ const Dashboard = () => {
   const handleStartAutomation = async () => {
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/automation/start');
+      await axios.post('https://lawmatics-backend.onrender.com/api/automation/start');
       showNotification('Scheduled automation started', 'success');
     } catch (error) {
       console.error('Error starting automation:', error);
@@ -132,7 +132,7 @@ const Dashboard = () => {
   const handleStopAutomation = async () => {
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/automation/stop');
+      await axios.post('https://lawmatics-backend.onrender.com/api/automation/stop');
       showNotification('Scheduled automation stopped', 'success');
     } catch (error) {
       console.error('Error stopping automation:', error);
@@ -144,7 +144,7 @@ const Dashboard = () => {
   const handleRunAllMatters = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/automation/run-once');
+      const response = await axios.post('https://lawmatics-backend.onrender.com/api/automation/run-once');
       showNotification(`Processed ${response.data.processed} new documents out of ${response.data.total} matters`, 'success');
       
       // Refresh matters to get updated statuses
@@ -166,7 +166,7 @@ const Dashboard = () => {
       // Update status to "Processing" immediately
       await updateMatterStatus(lawmaticsId, 'Processing...');
       
-      const response = await axios.post('http://localhost:5000/api/automation/process-single', { lawmaticsId });
+      const response = await axios.post('https://lawmatics-backend.onrender.com/api/automation/process-single', { lawmaticsId });
       
       if (response.data.success) {
         const newStatus = response.data.processed ? 'Automation Completed' : 'No Updates Found';
@@ -207,7 +207,7 @@ const Dashboard = () => {
         )
       );
 
-      const response = await axios.post('http://localhost:5000/api/automation/process-multiple', { 
+      const response = await axios.post('https://lawmatics-backend.onrender.com/api/automation/process-multiple', { 
         lawmaticsIds: selectedMatters 
       });
       
@@ -341,7 +341,7 @@ const Dashboard = () => {
       if (isValidApp && isValidLawmaticsId) {
         try {
           // Make the API call and wait for response
-          const response = await axios.post('http://localhost:5000/api/matters', {
+          const response = await axios.post('https://lawmatics-backend.onrender.com/api/matters', {
             applicationNumber: appNum,
             lawmaticsID: lawmaticsId,
             type: type
@@ -409,7 +409,7 @@ const Dashboard = () => {
     setValidEntries(reindexed);
     localStorage.setItem('validEntries', JSON.stringify(reindexed));
     
-    axios.delete(`http://localhost:5000/api/matters/${lawmaticsID}`).catch(console.error);
+    axios.delete(`https://lawmatics-backend.onrender.com/api/matters/${lawmaticsID}`).catch(console.error);
   };
 
   const toggleMatterSelection = (lawmaticsID) => {
@@ -646,5 +646,6 @@ const Dashboard = () => {
     </div>
   );
 };
+
 
 export default Dashboard;
