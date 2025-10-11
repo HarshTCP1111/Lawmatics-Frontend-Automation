@@ -17,7 +17,7 @@ const PatentDetails = () => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`http://localhost:5000/api/patent/${encodeURIComponent(decodedAppNumber)}/documents`);
+        const response = await fetch(`https://lawmatics-backend.onrender.com/api/patent/${encodeURIComponent(decodedAppNumber)}/documents`);
         
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status}`);
@@ -118,7 +118,7 @@ const PatentDetails = () => {
                   <td>
                     {doc.file ? (
                       <a
-                        href={`http://localhost:5000/api/patent/download?url=${encodeURIComponent(doc.file)}`}
+                        href={`https://lawmatics-backend.onrender.com/api/patent/download?url=${encodeURIComponent(doc.file)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="download-link"
@@ -147,5 +147,6 @@ const PatentDetails = () => {
     </div>
   );
 };
+
 
 export default PatentDetails;
