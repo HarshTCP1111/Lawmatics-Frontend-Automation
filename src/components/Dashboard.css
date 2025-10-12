@@ -888,6 +888,22 @@ tr.processing {
   gap: 10px;
   margin: 12px 0;
 }
+.selection-buttons button {
+  padding: 8px 16px;
+  border: 1px solid #000000;
+  background: white;
+  border-radius: 5px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.selection-buttons button:hover {
+  background: #3b82f6;
+  color: white;
+  border: #004085;
+}
 @keyframes pulse {
   0% { opacity: 1; }
   50% { opacity: 0.7; }
@@ -898,3 +914,4 @@ tr.processing {
   background: #f8f9fa !important;
 
 }
+
