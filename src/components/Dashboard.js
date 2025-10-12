@@ -445,6 +445,7 @@ const Dashboard = () => {
           <h1>LAWMATICS USPTO AUTOMATION DASHBOARD</h1>
         </div>
         <div className="header-right">
+           <button className="Automation-guide-btn guide-icon" onClick={() => window.open("/docs/Lawmatics-USPTO-Automation-Guide.pdf", "_blank")}>See Automation Guide </button>
           <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
       </header>
@@ -643,5 +644,6 @@ const Dashboard = () => {
 
 
 export default Dashboard;
+
 
 
