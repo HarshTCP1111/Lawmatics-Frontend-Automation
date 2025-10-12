@@ -468,12 +468,12 @@ const Dashboard = () => {
             Stop Scheduled Automation
           </button>
           
-          <button 
-            onClick={handleRunAllMatters} 
-            disabled={cronStatus.running || isLoading}
-          >
-            Run All Matters Now
-          </button>
+          // <button 
+          //   onClick={handleRunAllMatters} 
+          //   disabled={cronStatus.running || isLoading}
+          // >
+          //   Run All Matters Now
+          // </button>
 
           <button 
             onClick={handleProcessSelectedMatters} 
@@ -649,3 +649,4 @@ const Dashboard = () => {
 
 
 export default Dashboard;
+
