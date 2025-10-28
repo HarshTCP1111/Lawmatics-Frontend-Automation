@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://lawmatics-backend.onrender.com/api';
+const API_BASE_URL = 'https://lawmatics-backend-692908019770.asia-south1.run.app/api';
 
 export const sendOTP = async (email) => {
   try {

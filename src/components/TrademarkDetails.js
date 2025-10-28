@@ -50,7 +50,7 @@ const TrademarkDetails = () => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`https://lawmatics-backend.onrender.com/api/trademark/${appNumber}`);
+        const response = await fetch(`https://lawmatics-backend-692908019770.asia-south1.run.app/api/trademark/${appNumber}`);
         
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status}`);
